@@ -25,7 +25,7 @@ import java.io.InputStreamReader;
 @RestController("/betcity")
 public class BetcityController {
 
-    private final String REQUEST_URL = "https://ad.betcity.ru/d/on_air/events?rev=6&ver=696&csn=ooca9s";
+    private static final String REQUEST_URL = "https://ad.betcity.ru/d/on_air/events?rev=6&ver=696&csn=ooca9s";
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
