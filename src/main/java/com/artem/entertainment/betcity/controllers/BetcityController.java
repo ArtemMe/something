@@ -1,5 +1,6 @@
 package com.artem.entertainment.betcity.controllers;
 
+import com.artem.entertainment.Utils.Network;
 import com.artem.entertainment.betcity.Deserializers.ChmpDeserializer;
 import com.artem.entertainment.betcity.Deserializers.EventDeserializer;
 import com.artem.entertainment.betcity.models.Championships;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import sun.applet.Main;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -37,29 +37,29 @@ public class BetcityController {
         builder.registerTypeAdapter(Events.class, new EventDeserializer());
 
         Gson gson = builder.create();
-        MainModel model = gson.fromJson(readUrl(REQUEST_URL), MainModel.class);
+        MainModel model = gson.fromJson(Network.readUrl(REQUEST_URL), MainModel.class);
         return model;
     }
 
-    private String readUrl(String url) throws IOException {
-        HttpClient client = HttpClientBuilder.create().build();
-        HttpGet request = new HttpGet(url);
-
-        // add request header
-        request.addHeader("content-type", "application/json; charset=utf-8");
-        HttpResponse response = client.execute(request);
-
-        System.out.println("Response Code : "
-                + response.getStatusLine().getStatusCode());
-
-        BufferedReader rd = new BufferedReader(
-                new InputStreamReader(response.getEntity().getContent()));
-
-        StringBuffer result = new StringBuffer();
-        String line = "";
-        while ((line = rd.readLine()) != null) {
-            result.append(line);
-        }
-        return result.toString();
-    }
+//    private String readUrl(String url) throws IOException {
+//        HttpClient client = HttpClientBuilder.create().build();
+//        HttpGet request = new HttpGet(url);
+//
+//        // add request header
+//        request.addHeader("content-type", "application/json; charset=utf-8");
+//        HttpResponse response = client.execute(request);
+//
+//        System.out.println("Response Code : "
+//                + response.getStatusLine().getStatusCode());
+//
+//        BufferedReader rd = new BufferedReader(
+//                new InputStreamReader(response.getEntity().getContent()));
+//
+//        StringBuffer result = new StringBuffer();
+//        String line = "";
+//        while ((line = rd.readLine()) != null) {
+//            result.append(line);
+//        }
+//        return result.toString();
+//    }
 }

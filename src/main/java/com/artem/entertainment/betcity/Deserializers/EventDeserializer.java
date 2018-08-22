@@ -1,7 +1,5 @@
 package com.artem.entertainment.betcity.Deserializers;
 
-import com.artem.entertainment.betcity.models.Championship;
-import com.artem.entertainment.betcity.models.Championships;
 import com.artem.entertainment.betcity.models.Event;
 import com.artem.entertainment.betcity.models.Events;
 import com.google.gson.*;
